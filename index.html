@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<title></title>
+	<style type="text/css">
+	html,body{
+		width:100%;
+		height:100%;
+		overflow: hidden;
+	}
+		#mydiv{
+			position: relative;
+			width:1024px;
+			height:600px;
+			margin: 20px auto;
+			background: #eee;
+			perspective:1000px;
+		}
+		.stage-img{
+			position:absolute;
+			/*left:0;
+			top:0;*/
+			transition:all .5s ease-in-out;
+			transform-style:preserve-3d;
+			width:150px;
+			height:190px;
+			box-sizing:border-box;
+			background:#fff;
+			padding: 20px;
+			cursor: pointer;
+			transform-origin:0 50% 0;
+			 /*backface-visibility:hidden; */
+		}
+		.stage-img img{
+			display: block;
+			backface-visibility:hidden;
+		}
+		.stage-img h1{
+			display:block;
+			text-align: center;
+			font-size: 20px;
+			backface-visibility:hidden;
+		}
+		.reset-button{
+			position:absolute;
+			z-index: 101;
+			bottom:10px;
+			left:45%;
+		}
+		.img-back{
+			position:absolute;
+			padding:30px;
+			left:0;
+			top:0;
+			/*backface-visibility:visible;*/
+		}
+		.show{
+			display:block;
+		}
+		.hide{
+			display:none;
+		}
+		.img-figure{
+			position:relative;
+		}
+	</style>
+	<link rel="stylesheet" href="">
+	<script type="text/javascript" charset="utf-8" async defer>
+	//document.write(encodeURI("https://www.baidu.com//My first/")+ "<br />")
+	$(document).ready(function(){
+		//window.history.forward(-1);
+		//var inverse=false;
+		$(".stage-img").bind('click',function(){
+			$(this).css("transform","rotateX(0deg)");
+			$(this).css("transform","translateX(150px) rotateY(-180deg)");
+		})
+	});
+	function reset(){
+		for(var i=0;i<6;i++){
+			var imgTop=$(".img"+i).css("top");
+			var imgT=Math.ceil(Math.random()*500);
+			var imgL=Math.ceil(Math.random()*800);
+			var imgD=(Math.random() > 0.5 ? "" : "-")+Math.ceil(Math.random() * 30);
+			$(".img"+i).css("top",imgT)
+			$(".img"+i).css("left",imgL)
+			$(".img"+i).css("transform","rotate("+imgD+"deg)")
+			//console.log(imgD);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="mydiv">
+		<div class="stage-img img1">
+			<img src="01.png" alt="">
+			<h1>地球</h1>
+			<div class="img-back hide">这是地球图片的反面信息</div>
+		</div>
+		<div class="stage-img img2">
+			<img src="02.png" alt="">
+			<h1>小花</h1>
+		</div>
+		<div class="stage-img img3">
+			<img src="03.png" alt="">
+			<h1>蝴蝶</h1>
+		</div>
+		<div class="stage-img img4">
+			<img src="04.png" alt="">
+			<h1>麦穗</h1>
+		</div>
+		<div class="stage-img img5">
+			<img src="05.png" alt="">
+			<h1>循环</h1>
+		</div>
+	</div>
+	<button type="button" class="reset-button" onclick="reset()">重置</button>
+</body>
+</html>
