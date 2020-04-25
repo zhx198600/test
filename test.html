@@ -7,32 +7,22 @@
     <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 </head>
 <body>
-
-
-<h1>点击"执行"关闭当前页面并返回数据</h1>
-<a href="#" class="btn J_demo">执行</a>
+<button id="J_btn_url" class="btn btn-default">打开淘宝首页</button>
+<button id="J_btn_withData" class="btn btn-default">打开高德地图搜索页面</button>
 <script>
-    function ready(callback) {
-        // 如果jsbridge已经注入则直接调用
-        if (window.AlipayJSBridge) {
-            callback && callback();
-        } else {
-            // 如果没有注入则监听注入的事件
-            document.addEventListener('AlipayJSBridgeReady', callback, false);
-        }
-    }
-    ready(function(){
-        document.querySelector('.J_demo').addEventListener('click', function() {
-            // 传递的data对象将会被即将露出的页面通过resume事件接收
-            AlipayJSBridge.call('popTo', {
-                index: -1, // 回退到上一个页面，假如这个时候没有上一个页面，就会报错
-                data: { //特别强调：data是字典，不是数组
-                    from: location.href,
-                    info: Date.now()
-                }
-            }, function(e) { // 添加回调，因为popTo不一定会成功（当前页面是唯一打开的页面的时候，会报错）
-                alert(JSON.stringify(e));
-            });
+    var btnUrl = document.querySelector('#J_btn_url');
+    var btnWithData = document.querySelector('#J_btn_withData');
+    btnUrl.addEventListener('click', function(){
+        ap.pushWindow('https://m.taobao.com/#index');
+    });
+    btnWithData.addEventListener('click', function(){
+        ap.pushWindow({
+            url: 'http://uri.amap.com/search',
+            data: {
+                keyword: '美食',
+                city: '310100',
+                view: 'map'
+            }
         });
     });
 </script>
