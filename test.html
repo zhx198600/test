@@ -4,8 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>测试</title>
+    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 </head>
 <body>
-<a onclick="window.top.location='http://www.baidu.com'">跳转</a>
+<h1>返回到符合某个规则的url</h1>
+<h3></h3>
+<a href="javascript:void(0)" class="btn J_new_window">新窗口打开当前页面</a>
+<a href="javascript:void(0)" class="btn J_demo">返回</a>
+<script>
+    var query = getQuery();
+    var depth = (+query.depth) || 0;
+
+    document.querySelector('h3').innerHTML = '当前页面深度: ' + depth;
+
+    function ready(callback) {
+        // 如果jsbridge已经注入则直接调用
+        if (window.AlipayJSBridge) {
+            callback && callback();
+        } else {
+            // 如果没有注入则监听注入的事件
+            document.addEventListener('AlipayJSBridgeReady', callback, false);
+        }
+    }
+    ready(function(){
+        document.querySelector('.J_demo').addEventListener('click', function() {
+            AlipayJSBridge.call('popTo', {
+                urlPattern: 'pop-to-url-pattern.html',
+            }, function(e) {
+                alert(JSON.stringify(e));
+            });
+        });
+
+        document.querySelector('.J_new_window').addEventListener('click', function() {
+            AlipayJSBridge.call('pushWindow', {
+                url: location.pathname + '?depth=' + (1+depth),
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
