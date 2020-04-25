@@ -7,16 +7,11 @@
     <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
 </head>
 <body>
-<h1>返回到符合某个规则的url</h1>
-<h3></h3>
-<a href="javascript:void(0)" class="btn J_new_window">新窗口打开当前页面</a>
-<a href="javascript:void(0)" class="btn J_demo">返回</a>
+
+
+<h1>点击"执行"关闭当前页面并返回数据</h1>
+<a href="#" class="btn J_demo">执行</a>
 <script>
-    var query = getQuery();
-    var depth = (+query.depth) || 0;
-
-    document.querySelector('h3').innerHTML = '当前页面深度: ' + depth;
-
     function ready(callback) {
         // 如果jsbridge已经注入则直接调用
         if (window.AlipayJSBridge) {
@@ -28,20 +23,20 @@
     }
     ready(function(){
         document.querySelector('.J_demo').addEventListener('click', function() {
+            // 传递的data对象将会被即将露出的页面通过resume事件接收
             AlipayJSBridge.call('popTo', {
-                urlPattern: 'pop-to-url-pattern.html',
-            }, function(e) {
+                index: -1, // 回退到上一个页面，假如这个时候没有上一个页面，就会报错
+                data: { //特别强调：data是字典，不是数组
+                    from: location.href,
+                    info: Date.now()
+                }
+            }, function(e) { // 添加回调，因为popTo不一定会成功（当前页面是唯一打开的页面的时候，会报错）
                 alert(JSON.stringify(e));
-            });
-        });
-
-        document.querySelector('.J_new_window').addEventListener('click', function() {
-            AlipayJSBridge.call('pushWindow', {
-                url: location.pathname + '?depth=' + (1+depth),
             });
         });
     });
 </script>
+
 
 </body>
 </html>
