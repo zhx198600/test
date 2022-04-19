@@ -1,0 +1,371 @@
+</!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>饼图</title>
+  <script src="echarts.min.js"></script>
+  <style>
+    .flex{
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+<div class="flex">
+  <div id="item1" class="flex-item"></div>
+  <div id="item2" class="flex-item"></div>
+  <div id="item3" class="flex-item"></div>
+  <div id="item4" class="flex-item"></div>
+</div>
+
+<script type="text/javascript">
+  // alert(document.body.offsetWidth);
+  let w = document.body.offsetWidth / 4;
+  document.getElementById('item1').style.width = w + 'px';
+  document.getElementById('item1').style.height = w + 'px';
+  document.getElementById('item2').style.width = w + 'px';
+  document.getElementById('item2').style.height = w + 'px';
+  document.getElementById('item3').style.width = w + 'px';
+  document.getElementById('item3').style.height = w + 'px';
+  document.getElementById('item4').style.width = w + 'px';
+  document.getElementById('item4').style.height = w + 'px';
+  var myChart1 = echarts.init(document.getElementById('item1'));
+  var myChart2 = echarts.init(document.getElementById('item2'));
+  var myChart3 = echarts.init(document.getElementById('item3'));
+  var myChart4 = echarts.init(document.getElementById('item4'));
+  var option1 = {
+    tooltip: {
+      trigger: 'item',
+      // formatter: "{a} <br/>{b}: {c} ({d}%)"
+      // formatter: "{a} <br/>{b}.subStr(0,10)"
+      // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+      formatter:function (params, index) {
+        console.log(params);
+        let result = '';
+        if (params.seriesName == 'Failure') {
+          result = params.name;
+        } else if (params.seriesName == 'Depot') {
+          result = '';
+        } else {
+          result = params.name + ' ' + params.value + '%';
+        }
+        return result;
+      }
+    },
+    legend: {
+      orient: 'vertical',
+      icon: "circle",
+      textStyle: { //图例文字的样式
+        color: '#333',
+        fontSize: 12
+      },
+      right: 10,
+      top: 0,
+      data: ['0 Failure 4%', '1~4 Failure 6%', '>4 Failure 20%', 'All Failure 70%']
+    },
+
+    series: [
+      {
+        name:'Failure',
+        type:'pie',
+        selectedMode: 'single',
+        radius: ['40%', '50%'],
+
+        label: {
+          show: false
+        },
+        labelLine: {
+          show: false
+        },
+        data:[
+          {value:70, name:'0 Failure 4%',itemStyle:{color: "#2b84ff"}},
+          {value:6, name:'1~4 Failure 6%',itemStyle:{color: "#ff7c2b"}},
+          {value:20, name:'>4 Failure 20%',itemStyle:{color: "#2fced8"}},
+          {value:4, name:'All Failure 70%',itemStyle:{color: "#776ff6"}}
+        ]
+      },
+      {
+        name:'upload',
+        type:'pie',
+        radius: ['30%', '35%'],
+        label: {
+          show: false
+        },
+        labelLine: {
+          show: false
+        },
+        data:[
+          {value:20, name:'Uploaded',itemStyle:{color: "#dddddd"}},
+          {value:80, name:'No Upload',itemStyle:{color: "#690eb9"}}
+        ]
+      },
+      {
+        name:'Depot',
+        type:'pie',
+        radius: ['0%', '20%'],
+        label: {
+          normal: {
+            position: 'center',
+            fontSize: 22,
+            fontFamily:'Microsoft YaHei',
+            color:'#333',
+            background: '#fff'
+          }
+        },
+        data:[
+          {value:100, name:'KBD',itemStyle:{color: "#fff"}}
+        ]
+      }
+    ]
+  };
+  var option2 = {
+    tooltip: {
+      trigger: 'item',
+      // formatter: "{a} <br/>{b}: {c} ({d}%)"
+      // formatter: "{a} <br/>{b}.subStr(0,10)"
+      // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+      formatter:function (params, index) {
+        console.log(params);
+        let result = '';
+        if (params.seriesName == 'Failure') {
+          result = params.name;
+        } else if (params.seriesName == 'Depot') {
+          result = '';
+        } else {
+          result = params.name + ' ' + params.value + '%';
+        }
+        return result;
+      }
+    },
+    legend: {
+      orient: 'vertical',
+      icon: "circle",
+      right: 10,
+      top: 0,
+      data: ['0 Failure 4%', '1~4 Failure 6%', '>4 Failure 20%', 'All Failure 70%']
+    },
+
+    series: [
+      {
+        name:'Failure',
+        type:'pie',
+        selectedMode: 'single',
+        radius: ['40%', '50%'],
+
+        label: {
+          show: false
+        },
+        labelLine: {
+          show: false
+        },
+        data:[
+          {value:70, name:'0 Failure 4%',itemStyle:{color: "#2b84ff"}},
+          {value:20, name:'1~4 Failure 6%',itemStyle:{color: "#ff7c2b"}},
+          {value:6, name:'>4 Failure 20%',itemStyle:{color: "#2fced8"}},
+          {value:4, name:'All Failure 70%',itemStyle:{color: "#776ff6"}}
+        ]
+      },
+      {
+        name:'upload',
+        type:'pie',
+        radius: ['30%', '35%'],
+        label: {
+          show: false
+        },
+        labelLine: {
+          show: false
+        },
+        data:[
+          {value:10, name:'Uploaded',itemStyle:{color: "#dddddd"}},
+          {value:90, name:'No Upload',itemStyle:{color: "#690eb9"}}
+        ]
+      },
+      {
+        name:'Depot',
+        type:'pie',
+        radius: ['0%', '20%'],
+        label: {
+          normal: {
+            position: 'center',
+            fontSize: 22,
+            fontFamily:'Microsoft YaHei',
+            color:'#333',
+            background: '#fff'
+          }
+        },
+        data:[
+          {value:100, name:'CWD',itemStyle:{color: "#fff"}}
+        ]
+      }
+    ]
+  };
+  var option3 = {
+    tooltip: {
+      trigger: 'item',
+      // formatter: "{a} <br/>{b}: {c} ({d}%)"
+      // formatter: "{a} <br/>{b}.subStr(0,10)"
+      // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+      formatter:function (params, index) {
+        console.log(params);
+        let result = '';
+        if (params.seriesName == 'Failure') {
+          result = params.name;
+        } else if (params.seriesName == 'Depot') {
+          result = '';
+        } else {
+          result = params.name + ' ' + params.value + '%';
+        }
+        return result;
+      }
+    },
+    legend: {
+      orient: 'vertical',
+      icon: "circle",
+      right: 10,
+      top: 0,
+      data: ['0 Failure 4%', '1~4 Failure 6%', '>4 Failure 20%', 'All Failure 70%']
+    },
+
+    series: [
+      {
+        name:'Failure',
+        type:'pie',
+        selectedMode: 'single',
+        radius: ['40%', '50%'],
+
+        label: {
+          show: false
+        },
+        labelLine: {
+          show: false
+        },
+        data:[
+          {value:70, name:'0 Failure 4%',itemStyle:{color: "#2b84ff"}},
+          {value:6, name:'1~4 Failure 6%',itemStyle:{color: "#ff7c2b"}},
+          {value:20, name:'>4 Failure 20%',itemStyle:{color: "#2fced8"}},
+          {value:4, name:'All Failure 70%',itemStyle:{color: "#776ff6"}}
+        ]
+      },
+      {
+        name:'upload',
+        type:'pie',
+        radius: ['30%', '35%'],
+        label: {
+          show: false
+        },
+        labelLine: {
+          show: false
+        },
+        data:[
+          {value:20, name:'Uploaded',itemStyle:{color: "#dddddd"}},
+          {value:80, name:'No Upload',itemStyle:{color: "#690eb9"}}
+        ]
+      },
+      {
+        name:'Depot',
+        type:'pie',
+        radius: ['0%', '20%'],
+        label: {
+          normal: {
+            position: 'center',
+            fontSize: 22,
+            fontFamily:'Microsoft YaHei',
+            color:'#333',
+            background: '#fff'
+          }
+        },
+        data:[
+          {value:100, name:'TWD',itemStyle:{color: "#fff"}}
+        ]
+      }
+    ]
+  };
+  var option4 = {
+    tooltip: {
+      trigger: 'item',
+      // formatter: "{a} <br/>{b}: {c} ({d}%)"
+      // formatter: "{a} <br/>{b}.subStr(0,10)"
+      // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+      formatter:function (params, index) {
+        console.log(params);
+        let result = '';
+        if (params.seriesName == 'Failure') {
+          result = params.name;
+        } else if (params.seriesName == 'Depot') {
+          result = '';
+        } else {
+          result = params.name + ' ' + params.value + '%';
+        }
+        return result;
+      }
+    },
+    legend: {
+      orient: 'vertical',
+      icon: "circle",
+      right: 10,
+      top: 0,
+      data: ['0 Failure 4%', '1~4 Failure 6%', '>4 Failure 20%', 'All Failure 70%']
+    },
+
+    series: [
+      {
+        name:'Failure',
+        type:'pie',
+        selectedMode: 'single',
+        radius: ['40%', '50%'],
+
+        label: {
+          show: false
+        },
+        labelLine: {
+          show: false
+        },
+        data:[
+          {value:50, name:'0 Failure 4%',itemStyle:{color: "#2b84ff"}},
+          {value:20, name:'1~4 Failure 6%',itemStyle:{color: "#ff7c2b"}},
+          {value:10, name:'>4 Failure 20%',itemStyle:{color: "#2fced8"}},
+          {value:20, name:'All Failure 70%',itemStyle:{color: "#776ff6"}}
+        ]
+      },
+      {
+        name:'upload',
+        type:'pie',
+        radius: ['30%', '35%'],
+        label: {
+          show: false
+        },
+        labelLine: {
+          show: false
+        },
+        data:[
+          {value:40, name:'Uploaded',itemStyle:{color: "#dddddd"}},
+          {value:60, name:'No Upload',itemStyle:{color: "#690eb9"}}
+        ]
+      },
+      {
+        name:'Depot',
+        type:'pie',
+        radius: ['0%', '20%'],
+        label: {
+          normal: {
+            position: 'center',
+            fontSize: 22,
+            fontFamily:'Microsoft YaHei',
+            color:'#333',
+            background: '#fff'
+          }
+        },
+        data:[
+          {value:100, name:'TKD',itemStyle:{color: "#fff"}}
+        ]
+      }
+    ]
+  };
+  myChart1.setOption(option1);
+  myChart2.setOption(option2);
+  myChart3.setOption(option3);
+  myChart4.setOption(option4);
+</script>
+</body>
+</html>
