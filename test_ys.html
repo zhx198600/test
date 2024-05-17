@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script>
+    function handleClick(url) {
+      alert(url1);
+      window.location.href = url;
+    }
+  </script>
 </head>
+
 <body>
-  <a href="app-settings:">打开设置</a>
   <div>
-    <a href="https://www.baidu.com">打开百度</a>
+    <button onclick="handleClick('quark:\/\/')" href="quark://">打开夸克</button>
   </div>
+  <br />
+  <div>
+    <button onclick="handleClick('x-web-search:\/\/')" href="x-web-search://">浏览器</button>
+  </div>
+  <br />
+  <div>
+    <button onclick="handleClick('perfs:root=ControlCenter&path=CUSTOMIZE_CONTROLS')" href="perfs:root=ControlCenter&path=CUSTOMIZE_CONTROLS">打开设置</button>
+  </div>
+  <br />
+  <div>
+    <button onclick="handleClick('prefs:\/\/root')" href="prefs://root">打开设置</button>
+  </div>
+  <br />
+  <div>
+    <button onclick="handleClick('App-Prefs:\/\/root')" href="App-Prefs://root">打开设置</button>
+  </div>
+  <br />
+  <div>
+    <button onclick="handleClick('settings:\/\/')" href="settings://">拨号1</button>
+  </div>
+  <br />
+  <div>
+    <button onclick="handleClick('setting:\/\/')" href="setting://">拨号2</button>
+  </div>
+  <br />
+  <div>
+    <button onclick="handleClick('mobilenotes:\/\/')" href="mobilenotes://">备忘录</button>
+  </div>
+  <br />
+  <div>
+    <button onclick="handleClick('tel:\/\/18752143301')" href="tel://18752143301">拨号</button>
+  </div>
+  <br />
+  <div>
+    <button onclick="handleClick('sms:\/\/18752143301')" href="sms://18752143301">短信</button>
+  </div>
+  <br />
 </body>
+
 </html>
