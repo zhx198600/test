@@ -5,9 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src = "https://activity-static-front.heytapdownload.com/activity/common/jsapi/jsapi-0.4.4.js"></script>
+  <script>
+    function jumpSetting() {
+      heytap.location
+        .openSetting({
+          action: 'USER_SETTINGS',
+        })
+        .then((res) => {
+          alert(8)
+        })
+      // 浏览器
+      heytap.location.openSetting().then((res) => {alert(9)})
+    }
+  </script>
 </head>
 
 <body>
+  <a onclick="jumpSetting()">「跳转设置」</a><br />
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「设置免打扰模式」</a>
   <br /><br />
