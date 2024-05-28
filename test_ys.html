@@ -10,19 +10,25 @@
     function jumpSetting() {
       heytap.location
         .openSetting({
-          action: 'android.settings.USER_SETTINGS',
+          action: 'ZEN_MODE_SETTINGS',
         })
         .then((res) => {
-          alert(8)
+          alert(JSON.stringify(res));
         })
       // 浏览器
       heytap.location.openSetting().then((res) => {alert(9)})
+    }
+    function jumpWifi() {
+      heytap.location.openWifi().then((res) => {
+        alert(JSON.stringify(res));
+      })
     }
   </script>
 </head>
 
 <body>
   <a onclick="jumpSetting()">「跳转设置」</a><br />
+  <a onclick="jumpWifi()">「wifi」</a><br />
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「设置免打扰模式」</a>
   <br /><br />
