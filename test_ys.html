@@ -16,7 +16,7 @@
           alert(JSON.stringify(res));
         })
       // 浏览器
-      heytap.location.openSetting().then((res) => {alert(window.HeytapJsApi)})
+      heytap.location.openSetting().then((res) => {alert(JSON.stringify(window.HeytapJsApi))})
     }
     function jumpWifi() {
       heytap.location.openWifi().then((res) => {
