@@ -7,10 +7,14 @@
   <title>Document</title>
   <script src = "https://activity-static-front.heytapdownload.com/activity/common/jsapi/jsapi-0.4.4.js"></script>
   <script>
-    function jumpSetting() {
+    function jumpSetting(action) {
+      var newAction = action;
+      if (action == 'VIRUS_SCAN_MAIN') {
+        newAction = 'SETTINGS';
+      }
       heytap.location
         .openSetting({
-          action: 'USER_SETTINGS',
+          action: newAction,
         })
         .then((res) => {
           alert(JSON.stringify(res));
@@ -18,91 +22,10 @@
       // 浏览器
       // heytap.location.openSetting().then((res) => {alert(JSON.stringify(window.HeytapJsApi))})
     }
-    function jumpSetting1() {
-      heytap.location
-        .openSetting({
-          action: 'SOUND_SETTINGS',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
-    }
-    function jumpSetting2() {
-      heytap.location
-        .openSetting({
-          action: 'ZEN_MODE_SETTINGS',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
-    }
-    function jumpSetting3() {
-      heytap.location
-        .openSetting({
-          action: 'DISPLAY_SETTINGS',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
-    }
-    function jumpSetting4() {
-      heytap.location
-        .openSetting({
-          action: 'ACCESSIBILITY_SETTINGS',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
-    }
-    function jumpSetting5() {
-      heytap.location
-        .openSetting({
-          action: 'DATE_SETTINGS',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
-    }
-    function jumpSetting6() {
-      heytap.location
-        .openSetting({
-          action: 'LOCALE_SETTINGS',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
-    }
-    function jumpSetting7() {
-      heytap.location
-        .openSetting({
-          action: 'VIRUS_SCAN_MAIN',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
-    }
-    function jumpSetting8() {
-      heytap.location
-        .openSetting({
-          action: 'coloros.safecenter.intent.action.VIRUS_SCAN_MAIN',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
-    }
     function jumpWifi() {
       heytap.location.openWifi().then((res) => {
         alert(JSON.stringify(res));
       })
-    }
-    function jumpWifi1() {
-      heytap.location
-        .openSetting({
-          action: 'WIFI_SETTINGS',
-        })
-        .then((res) => {
-          alert(JSON.stringify(res));
-        })
     }
     function getIMEI() {
       heytap.device.getImei().then((res) => {
@@ -115,18 +38,21 @@
 </head>
 
 <body>
-  <button onclick="jumpSetting()">「跳转用户设置」</button><br /><br />
-  <button onclick="jumpSetting1()">「跳转静音模式」</button><br /><br />
-  <button onclick="jumpSetting2()">「跳转勿扰设置」</button><br /><br />
-  <button onclick="jumpSetting3()">「跳转自动息屏」</button><br /><br />
-  <button onclick="jumpSetting4()">「跳转电源键结束通话」</button><br /><br />
-  <button onclick="jumpSetting5()">「跳转时间显示」</button><br /><br />
-  <button onclick="jumpSetting6()">「跳转手机语言」</button><br /><br />
-  <button onclick="jumpSetting7()">「跳转病毒扫描1」</button><br /><br />
-  <button onclick="jumpSetting8()">「跳转病毒扫描2」</button><br /><br />
+  <button onclick="jumpSetting('SETTINGS')">「跳转设置首页」</button><br /><br />
+  <button onclick="jumpSetting('APPLICATION_SETTINGS')">「跳转设置首页1」</button><br /><br />
+  <button onclick="jumpSetting('USER_SETTINGS')">「跳转用户设置」</button><br /><br />
+  <button onclick="jumpSetting('SOUND_SETTINGS')">「跳转静音模式」</button><br /><br />
+  <button onclick="jumpSetting('ZEN_MODE_SETTINGS')">「跳转勿扰设置」</button><br /><br />
+  <button onclick="jumpSetting('DISPLAY_SETTINGS')">「跳转自动息屏」</button><br /><br />
+  <button onclick="jumpSetting('ACCESSIBILITY_SETTINGS')">「跳转电源键结束通话」</button><br /><br />
+  <button onclick="jumpSetting('DATE_SETTINGS')">「跳转时间显示」</button><br /><br />
+  <button onclick="jumpSetting('LOCALE_SETTINGS')">「跳转手机语言」</button><br /><br />
+  <button onclick="jumpSetting('WIFI_SETTINGS')">「跳转WIFI」</button><br /><br />
+  <button onclick="jumpSetting('VIRUS_SCAN_MAIN')">「跳转病毒扫描」</button><br /><br />
+  <button onclick="jumpSetting('SECURITY_SETTINGS')">「跳转信息拦截」</button><br /><br />
+  <button onclick="jumpSetting('SMS_RECEIVED')">「跳转信息拦截1」</button><br /><br />
   <button onclick="getIMEI()">「获取IMEI」</button><br /><br />
   <button onclick="jumpWifi()">「wifi浏览器」</button><br /><br />
-  <button onclick="jumpWifi1()">「wifi应用」</button><br /><br />
   <!-- <a href="#heytap.location.setAlarm">设置闹钟</a><br />
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「设置免打扰模式」</a>
