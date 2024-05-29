@@ -34,6 +34,9 @@
         alert(JSON.stringify(res));
       })
     }
+    function test() {
+      alert(window.HeytapNativeApi.invoke());
+    }
   </script>
 </head>
 
@@ -53,6 +56,7 @@
   <button onclick="jumpSetting('SMS_RECEIVED')">「跳转信息拦截（转设置首页）」</button><br /><br />
   <button onclick="getIMEI()">「获取IMEI」</button><br /><br />
   <button onclick="jumpWifi()">「wifi浏览器」</button><br /><br />
+  <button onclick="test()">「测试」</button><br /><br />
   <!-- <a href="#heytap.location.setAlarm">设置闹钟</a><br />
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「设置免打扰模式」</a>
