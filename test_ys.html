@@ -21,13 +21,67 @@
     function jumpSetting1() {
       heytap.location
         .openSetting({
-          action: 'android.settings.ZEN_MODE_SETTINGS',
+          action: 'SOUND_SETTINGS',
         })
         .then((res) => {
           alert(JSON.stringify(res));
         })
     }
     function jumpSetting2() {
+      heytap.location
+        .openSetting({
+          action: 'ZEN_MODE_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
+    }
+    function jumpSetting3() {
+      heytap.location
+        .openSetting({
+          action: 'DISPLAY_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
+    }
+    function jumpSetting4() {
+      heytap.location
+        .openSetting({
+          action: 'ACCESSIBILITY_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
+    }
+    function jumpSetting5() {
+      heytap.location
+        .openSetting({
+          action: 'DATE_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
+    }
+    function jumpSetting6() {
+      heytap.location
+        .openSetting({
+          action: 'LOCALE_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
+    }
+    function jumpSetting7() {
+      heytap.location
+        .openSetting({
+          action: 'ZEN_MODE_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
+    }
+    function jumpSetting8() {
       heytap.location
         .openSetting({
           action: 'ZEN_MODE_SETTINGS',
@@ -55,12 +109,18 @@
 </head>
 
 <body>
-  <button onclick="jumpSetting()">「跳转设置」</button><br /><br />
-  <button onclick="jumpSetting1()">「跳转勿扰设置1」</button><br /><br />
-  <button onclick="jumpSetting2()">「跳转勿扰设置2」</button><br /><br />
+  <button onclick="jumpSetting()">「跳转用户设置」</button><br /><br />
+  <button onclick="jumpSetting1()">「跳转静音模式」</button><br /><br />
+  <button onclick="jumpSetting2()">「跳转勿扰设置」</button><br /><br />
+  <button onclick="jumpSetting3()">「跳转自动息屏」</button><br /><br />
+  <button onclick="jumpSetting4()">「跳转电源键结束通话」</button><br /><br />
+  <button onclick="jumpSetting5()">「跳转时间显示」</button><br /><br />
+  <button onclick="jumpSetting6()">「跳转手机语言」</button><br /><br />
+  <!-- <button onclick="jumpSetting7()">「跳转勿扰设置」</button><br /><br />
+  <button onclick="jumpSetting8()">「跳转勿扰设置」</button><br /><br /> -->
   <button onclick="getIMEI()">「获取IMEI」</button><br /><br />
   <button onclick="jumpWifi()">「wifi」</button><br /><br />
-  <button onclick="jumpWifi1()">「打开移动网络设置」</button><br /><br />
+  <button onclick="jumpWifi1()">「打开移动网络设置(不管用)」</button><br /><br />
   <!-- <a href="#heytap.location.setAlarm">设置闹钟</a><br />
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「设置免打扰模式」</a>
