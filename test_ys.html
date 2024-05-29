@@ -10,16 +10,44 @@
     function jumpSetting() {
       heytap.location
         .openSetting({
-          action: 'ZEN_MODE_SETTINGS',
+          action: 'USER_SETTINGS',
         })
         .then((res) => {
           alert(JSON.stringify(res));
         })
       // 浏览器
-      heytap.location.openSetting().then((res) => {alert(JSON.stringify(window.HeytapJsApi))})
+      // heytap.location.openSetting().then((res) => {alert(JSON.stringify(window.HeytapJsApi))})
+    }
+    function jumpSetting1() {
+      heytap.location
+        .openSetting({
+          action: 'android.settings.ZEN_MODE_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
+    }
+    function jumpSetting2() {
+      heytap.location
+        .openSetting({
+          action: 'ZEN_MODE_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
     }
     function jumpWifi() {
       heytap.location.openWifi().then((res) => {
+        alert(JSON.stringify(res));
+      })
+    }
+    function jumpWifi1() {
+      heytap.location.openData().then((res) => {})
+    }
+    function getIMEI() {
+      heytap.device.getImei().then((res) => {
+        let imei = res.data;
+        alert(JSON.stringify(imei));
         alert(JSON.stringify(res));
       })
     }
@@ -27,9 +55,13 @@
 </head>
 
 <body>
-  <button onclick="jumpSetting()">「跳转设置」</button><br />
-  <button onclick="jumpWifi()">「wifi」</button><br />
-  <a href="#heytap.location.setAlarm">设置闹钟</a><br />
+  <button onclick="jumpSetting()">「跳转设置」</button><br /><br />
+  <button onclick="jumpSetting1()">「跳转勿扰设置1」</button><br /><br />
+  <button onclick="jumpSetting2()">「跳转勿扰设置2」</button><br /><br />
+  <button onclick="getIMEI()">「获取IMEI」</button><br /><br />
+  <button onclick="jumpWifi()">「wifi」</button><br /><br />
+  <button onclick="jumpWifi1()">「打开移动网络设置」</button><br /><br />
+  <!-- <a href="#heytap.location.setAlarm">设置闹钟</a><br />
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「设置免打扰模式」</a>
   <br /><br />
@@ -42,7 +74,7 @@
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「定时免打扰」</a><br /><br />
   <a data-action="jumpLink" data-packagename="com.colors.phonemanager"
-    data-packageaction="com.oppo.cleandroid.ui.ClearMainActivity">「清理存储空间」</a><br /><br />
+    data-packageaction="com.oppo.cleandroid.ui.ClearMainActivity">「清理存储空间」</a><br /><br /> -->
 </body>
 
 </html>
