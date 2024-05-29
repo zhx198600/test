@@ -75,7 +75,7 @@
     function jumpSetting7() {
       heytap.location
         .openSetting({
-          action: 'ZEN_MODE_SETTINGS',
+          action: 'VIRUS_SCAN_MAIN',
         })
         .then((res) => {
           alert(JSON.stringify(res));
@@ -84,7 +84,7 @@
     function jumpSetting8() {
       heytap.location
         .openSetting({
-          action: 'ZEN_MODE_SETTINGS',
+          action: 'coloros.safecenter.intent.action.VIRUS_SCAN_MAIN',
         })
         .then((res) => {
           alert(JSON.stringify(res));
@@ -96,7 +96,13 @@
       })
     }
     function jumpWifi1() {
-      heytap.location.openData().then((res) => {})
+      heytap.location
+        .openSetting({
+          action: 'WIFI_SETTINGS',
+        })
+        .then((res) => {
+          alert(JSON.stringify(res));
+        })
     }
     function getIMEI() {
       heytap.device.getImei().then((res) => {
@@ -116,11 +122,11 @@
   <button onclick="jumpSetting4()">「跳转电源键结束通话」</button><br /><br />
   <button onclick="jumpSetting5()">「跳转时间显示」</button><br /><br />
   <button onclick="jumpSetting6()">「跳转手机语言」</button><br /><br />
-  <!-- <button onclick="jumpSetting7()">「跳转勿扰设置」</button><br /><br />
-  <button onclick="jumpSetting8()">「跳转勿扰设置」</button><br /><br /> -->
+  <button onclick="jumpSetting7()">「跳转病毒扫描1」</button><br /><br />
+  <button onclick="jumpSetting8()">「跳转病毒扫描2」</button><br /><br />
   <button onclick="getIMEI()">「获取IMEI」</button><br /><br />
-  <button onclick="jumpWifi()">「wifi」</button><br /><br />
-  <button onclick="jumpWifi1()">「打开移动网络设置(不管用)」</button><br /><br />
+  <button onclick="jumpWifi()">「wifi浏览器」</button><br /><br />
+  <button onclick="jumpWifi1()">「wifi应用」</button><br /><br />
   <!-- <a href="#heytap.location.setAlarm">设置闹钟</a><br />
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「设置免打扰模式」</a>
