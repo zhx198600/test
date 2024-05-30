@@ -54,10 +54,17 @@
           ],
         }
       }
-    ).then(function(res){
-      debugger
-      alert(JSON.stringify(res));
-    });
+      ).then(function(res){
+        debugger
+        alert(JSON.stringify(res));
+      });
+    }
+    function getModel() {
+      heytap.device.getModel().then((res) => {
+        let modelName = res.data
+        alert(JSON.stringify(res));
+        alert(JSON.stringify(modelName));
+      })
     }
   </script>
 </head>
@@ -78,6 +85,7 @@
   <button onclick="jumpSetting('SMS_RECEIVED')">「跳转信息拦截（转设置首页）」</button><br /><br />
   <button onclick="getIMEI()">「获取IMEI」</button><br /><br />
   <button onclick="jumpWifi()">「wifi浏览器」</button><br /><br />
+  <button onclick="getModel()">「获取手机型号」</button><br /><br />
   <button onclick="test('com.android.settings','android.settings.ZEN_MODE_SETTINGS')">「测试1」</button><br /><br />
   <button onclick="test('com.android.settings','ZEN_MODE_SETTINGS')">「测试2」</button><br /><br />
   <button onclick="test('com.coloros.phonemanager','coloros.safecenter.intent.action.VIRUS_SCAN_MAIN')">「测试3」</button><br /><br />
