@@ -59,6 +59,39 @@
         alert(JSON.stringify(res));
       });
     }
+    function test1() {
+      // alert(JSON.stringify(window));
+      // debugger
+      window.heytap.invoke(
+      "vip.launchActivity",
+      {
+        linkInfo: {
+          downloadUrl: '',
+          linkDetail: [
+            {
+              appVersion: '',
+              linkType: 'NATIVE',
+              linkUrl:
+                'intent:#Intent;action=com.usercenter.action.activity.credits.market;S.KEY_FORM_PKG=com.heytap.usercenter;S.extra_page_title=????B.extra_key_is_market_first_load=true;S.url=https://jf.heytapmobi.com/integralBill.html?none&isbigfont=true&isTranslucentBar=false&isOPPOExp=false;end',
+              osVersion: '',
+              packageName: 'com.heytap.usercenter',
+            },
+            {
+              appVersion: '',
+              linkType: 'NATIVE',
+              linkUrl:
+                'intent:#Intent;action=oppo.usercenter.intent.action.credits.market;S.KEY_FORM_PKG=com.oppo.usercenter;S.extra_page_title=????B.extra_key_is_market_first_load=true;S.url=https://jf.heytapmobi.com/integralBill.html?none&isbigfont=true&isTranslucentBar=false&isOPPOExp=false;end',
+              osVersion: '',
+              packageName: 'com.oppo.usercenter',
+            },
+          ],
+        }
+      }
+      ).then(function(res){
+        debugger
+        alert(JSON.stringify(res));
+      });
+    }
     function getModel() {
       heytap.device.getModel().then((res) => {
         let modelName = res.data
@@ -89,6 +122,7 @@
   <button onclick="test('com.android.settings','android.settings.ZEN_MODE_SETTINGS')">「测试1」</button><br /><br />
   <button onclick="test('com.android.settings','ZEN_MODE_SETTINGS')">「测试2」</button><br /><br />
   <button onclick="test('com.coloros.phonemanager','coloros.safecenter.intent.action.VIRUS_SCAN_MAIN')">「测试3」</button><br /><br />
+  <button onclick="test1()">「测试4」</button><br /><br />
   <!-- <a href="#heytap.location.setAlarm">设置闹钟</a><br />
   <a data-action="jumpLink" data-packagename="com.android.settings"
     data-packageaction="android.settings.ZEN_MODE_SETTINGS">「设置免打扰模式」</a>
