@@ -47,9 +47,9 @@
             {
               appVersion: '',
               linkType: 'NATIVE',
-              linkUrl: link,
+              linkUrl: 'uc://platform.usercenter.com/creditMarket?url=https%3A%2F%2Fwww.baidu.com&min_version=80400',
               osVersion: '',
-              packageName: packageName,
+              packageName: '',
             }
           ],
         }
@@ -97,6 +97,8 @@
         let modelName = res.data
         alert(JSON.stringify(res));
         alert(JSON.stringify(modelName));
+      }).catch((res)=>{
+        alert(JSON.stringify(res));
       })
     }
   </script>
