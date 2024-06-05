@@ -1,32 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>测试</title>
-    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定位</title>
 </head>
+
 <body>
-<button id="J_btn_url" class="btn btn-default">打开淘宝首页</button>
-<button id="J_btn_withData" class="btn btn-default">打开高德地图搜索页面</button>
-<script>
-    var btnUrl = document.querySelector('#J_btn_url');
-    var btnWithData = document.querySelector('#J_btn_withData');
-    btnUrl.addEventListener('click', function(){
-        ap.pushWindow('https://m.taobao.com/#index');
-    });
-    btnWithData.addEventListener('click', function(){
-        ap.pushWindow({
-            url: 'http://uri.amap.com/search',
-            data: {
-                keyword: '美食',
-                city: '310100',
-                view: 'map'
-            }
-        });
-    });
-</script>
-
-
+  <iframe style="width: 600px;height: 600px;" src="https://qy-online.lixiang.com/client?k=ec8ab0624fdefb909ba83624ab5f852f&wp=1&robotShuntSwitch=0&sid=158&language=zh-cn&templateId=10" frameborder="0"></iframe>
+  
+  <iframe style="width: 600px;height: 600px;" src="http://47.121.132.240/web/" frameborder="0"></iframe>
 </body>
+
 </html>
