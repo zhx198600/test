@@ -60,7 +60,15 @@ debugger
     // });
   });
   
-  window.onmessage = function (e) {debugger
+  window.onmessage = function (e) {
+    console.log(e,'e');
+    alert('onmessage1');
+    if (navigator.geolocation) {
+      alert('onmessage2');
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      alert("Geolocation is not supported by this browser1.");
+    }
       if (e.data.command != "COMMAND_GET_TITLE") {
           console.log(e.data)
       }
