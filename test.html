@@ -9,7 +9,7 @@
 
 <body>
   <div>
-    <iframe style="width: 600px;height: 600px;" src="https://qy-online.lixiang.com/client?k=ec8ab0624fdefb909ba83624ab5f852f&wp=1&robotShuntSwitch=0&sid=158&language=zh-cn&templateId=10" frameborder="0"></iframe>
+    <iframe style="width: 600px;height: 600px;" src="https://qy-online.lixiang.com/client?k=ec8ab0624fdefb909ba83624ab5f852f&wp=1&robotShuntSwitch=0&sid=158&language=zh-cn&templateId=10" frameborder="0" id="getAddress"></iframe>
   </div>
   <div>
     <iframe style="width: 600px;height: 600px;" src="https://lxcc-inner-staff1-ontest.chehejia.com/client?k=ec8ab0624fdefb909ba83624ab5f852f&wp=1&robotShuntSwitch=0&sid=106&language=zh-cn&templateId=7" frameborder="0"></iframe>
@@ -17,6 +17,79 @@
   <div>
     <iframe style="width: 600px;height: 600px;" src="https://zhx198600.github.io/test/loction1.html" frameborder="0"></iframe>
   </div>
+  
 </body>
+<script>
 
+  // window.onload = function() {
+  //   var iframe = document.getElementById('getAddress');
+  //   iframe.onload = function() {
+  //     console.log(123333)
+  //     iframe.contentWindow.postMessage('openMap', 'https://qy-online.lixiang.com/client?k=ec8ab0624fdefb909ba83624ab5f852f&wp=1&robotShuntSwitch=0&sid=158&language=zh-cn&templateId=10');
+  //   };
+  // };
+  // navigator.geolocation.getCurrentPosition(function (position) {
+  //   console.log(position,'123')
+  //   var latitude = position.coords.latitude;
+  //   var longitude = position.coords.longitude;
+  //   // 将经纬度传递给子页面
+  //   var childFrame = document.getElementById("getAddress");
+  //   console.log(latitude,longitude,'longitudelongitudelongitudelongitudelongitude')
+  //   console.log(childFrame,'longitudelongitudelongitudelongitudelongitude')
+  //   childFrame.contentWindow.postMessage({ latitude: latitude, longitude: longitude }, "*");
+  // });
+
+  var iframe = document.getElementById('getAddress')
+  console.log(iframe,'https://qy-online.lixiang.com/client?k=ec8ab0624fdefb909ba83624ab5f852f&wp=1&robotShuntSwitch=0&sid=158&language=zh-cn&templateId=10')
+  iframe.addEventListener('load', function() {
+    // alert('2222')
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+    // var btn = iframe.contentDocument.getElementById('my-btn');
+    // btn.addEventListener('click', function() {
+    //   // 处理按钮点击事件，弹出定位弹窗
+    // });
+  });
+
+  function showPosition(position) {
+    alert("Latitude: " + position.coords.latitude + "\nLongitude: " + position.coords.longitude);
+  }
+
+  function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        alert("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        alert("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("An unknown error occurred.");
+        break;
+    }
+  }
+
+  //   function loadiframe(){
+//     let that = this;
+//     let iframe = document.getElementById('getAddress').contentWindow;
+//     iframe.postMessage('hello', 'https://qy-online.lixiang.com/client');
+//     window.addEventListener("message", function (e) {
+//         if (e.data.command != "COMMAND_GET_TITLE") {
+//             console.log(e.data,1111)
+//         }
+//     }.bind(this), false);
+// }
+//   loadiframe()
+//   window.onmessage = function (e) {
+//     if (e.data.command != "COMMAND_GET_TITLE") {
+//       console.log(e.data,2222)
+//     }
+//   }
+</script>
 </html>
