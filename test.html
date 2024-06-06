@@ -38,13 +38,15 @@
   //   console.log(childFrame,'longitudelongitudelongitudelongitudelongitude')
   //   childFrame.contentWindow.postMessage({ latitude: latitude, longitude: longitude }, "*");
   // });
-
+debugger
   var iframe = document.getElementById('getAddress1')
-  iframe.postMessage('hello', 'https://lxcc-inner-staff1-ontest.chehejia.com/');
-  console.log(iframe,'https://qy-online.lixiang.com/client?k=ec8ab0624fdefb909ba83624ab5f852f&wp=1&robotShuntSwitch=0&sid=158&language=zh-cn&templateId=10');
+  console.log(iframe,'iframe')
   window.addEventListener('message',function(Event){
     console.log(Event,'Event')
   })
+  // iframe.postMessage('hello', 'https://lxcc-inner-staff1-ontest.chehejia.com/');
+  console.log(iframe,'https://qy-online.lixiang.com/client?k=ec8ab0624fdefb909ba83624ab5f852f&wp=1&robotShuntSwitch=0&sid=158&language=zh-cn&templateId=10');
+
   iframe.addEventListener('load', function() {
     // alert('2222')
     if (navigator.geolocation) {
