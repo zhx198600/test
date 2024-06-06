@@ -36,8 +36,8 @@
         // alert(videoElement)
         videoElement.addEventListener('click', function() {
             console.log(window,'子window');
-            // window.postMessage('hello1','https://zhx198600.github.io/');
-            window.parent.postMessage('hello2','https://zhx198600.github.io/');
+            window.postMessage('hello1','https://zhx198600.github.io/');
+            // window.parent.postMessage('hello2','https://zhx198600.github.io/');
         }, false);
         var map = new AMap.Map('container', {
             zoom: 16,
