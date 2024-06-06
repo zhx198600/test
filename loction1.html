@@ -21,17 +21,24 @@
 </head>
 
 <body>
-    <div id="container"></div>
+    <div id="container" style="width: 300px;height: 400px;"></div>
     <div class="info">
+        <button id="btn-map">test</button>
         <h4 id="status"></h4>
         <hr>
         <p id="result"></p>
         <hr>
         <p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
     </div>
-    <script type="text/javascript"
-        src="https://webapi.amap.com/maps?v=2.0&key=6cd6131dd540c78312bd2cd231bdee9c"></script>
+    <script type="text/javascript"src="https://webapi.amap.com/maps?v=2.0&key=6cd6131dd540c78312bd2cd231bdee9c"></script>
     <script type="text/javascript">
+        var videoElement = document.getElementById('btn-map')
+        // alert(videoElement)
+        videoElement.addEventListener('click', function() {
+            console.log(window,'子window');
+            window.postMessage('hello1','https://zhx198600.github.io/');
+            window.parent.postMessage('hello2','https://zhx198600.github.io/');
+        }, false);
         var map = new AMap.Map('container', {
             zoom: 16,
             WebGLParams: {
