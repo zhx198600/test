@@ -38,7 +38,7 @@
   //   console.log(childFrame,'longitudelongitudelongitudelongitudelongitude')
   //   childFrame.contentWindow.postMessage({ latitude: latitude, longitude: longitude }, "*");
   // });
-debugger
+// debugger
   var iframe = document.getElementById('getAddress1')
   console.log(iframe,'iframe')
   window.addEventListener('message',function(Event){
@@ -93,11 +93,6 @@ debugger
         alert("An unknown error occurred.");
         break;
     }
-  }
-  window.onmessage = function (e) {debugger
-      if (e.data.command != "COMMAND_GET_TITLE") {
-          console.log(e.data)
-      }
   }
 
   //   function loadiframe(){
