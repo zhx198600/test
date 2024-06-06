@@ -49,12 +49,20 @@
                 timeout: 20000,
             });
             map.addControl(geolocation);
-            geolocation.getCurrentPosition(function (status, result) {
-                if (status == 'complete') {
-                    onComplete(result)
-                } else {
-                    onError(result)
-                }
+            // geolocation.getCurrentPosition(function (status, result) {
+            //     if (status == 'complete') {
+            //         onComplete(result)
+            //     } else {
+            //         onError(result)
+            //     }
+            // });
+            geolocation.getCurrentPosition();
+            AMap.Event.addListener(geolocation, 'complete', () => {});
+            AMap.Event.addListener(geolocation, 'error', (obj) => {
+                // onLocation({ position: { lng: 116.397428, lat: 39.90923 } });
+                console.log(obj, 'error');
+                // message.error('获取位置失败！');
+                message.error(obj.message);
             });
         });
         //解析定位结果
