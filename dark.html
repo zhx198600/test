@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>暗黑模式</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      background: white;
+      color: black;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        background: rgb(67, 2, 2);
+        color: white;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>我是内容</div>
+</body>
+<script>
+  debugger
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+  function darkModeHandler() {debugger
+    if (mediaQuery.matches) {
+      alert('现在是深色模式')
+    } else {
+      alert('现在是浅色模式')
+    }
+  }
+
+// 判断当前模式
+darkModeHandler()
+// 监听模式变化
+mediaQuery.addListener(darkModeHandler)
+</script>
+</html>
