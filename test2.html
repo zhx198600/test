@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定位</title>
+</head>
+
+<body onload="loadPage()">
+  <div>张红霞测试页面</div>
+</body>
+<script>
+  function loadPage() {
+    var myTitle = 'test';
+    document.title = myTitle;
+    console.log('111',myTitle,window);
+    console.log('222',myTitle,window.navigator);
+    console.log('333',myTitle,window.navigator.userAgent);
+    alert(window.navigator.userAgent);
+    setTimeout(()=>{
+      document.title = '正在输入...';
+      alert(window.navigator.userAgent);
+      console.log('444',myTitle,window.navigator.userAgent);
+    },5000)
+  }
+</script>
+</html>
