@@ -8,7 +8,21 @@
 </head>
 
 <body onload="loadPage()">
-  <div>张红霞测试页面</div>
+  <div>
+    <a href="https://ccp-dev.oasqa.com/login" target="_self">ccp当前页面跳转</a>
+    <p></p>
+    <a href="https://ccp-dev.oasqa.com/login" target="_blank">ccp新窗口跳转</a>
+    <p></p>
+    <a href="https://localhost:8002/login" target="_self">ccp当前页面跳转本地</a>
+    <p></p>
+    <a href="https://localhost:8002/login" target="_blank">ccp新窗口跳转本地</a>
+  </div>
+  <div>Mozilla/5.0 (Linux; U; Android
+    12; zh-CN; NOH-ANOO Build/HUAWEINOH-AN00)
+    AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0
+    Chrome/100.0.4896.58 UWS/ 5.12.4.0 Mobile Safari/537.36
+    AliApp(DingTalk/7.6.17)
+    com.alibaba.android.rimet/ 40144870 Channel/227200 language/zh-CN abi/64 Hmos/ 4.2.0 xpn/huawei UT4Aplus/ 0.2.25 colorScheme/light</div>
 </body>
 <script>
   function loadPage() {
@@ -17,10 +31,12 @@
     console.log('111',myTitle,window);
     console.log('222',myTitle,window.navigator);
     console.log('333',myTitle,window.navigator.userAgent);
-    alert(window.navigator.userAgent);
+    // alert(window.navigator.userAgent);
     setTimeout(()=>{
       document.title = '正在输入...';
-      alert(window.navigator.userAgent);
+    },5000)
+    setTimeout(()=>{
+      // alert(window.navigator.userAgent);
       console.log('444',myTitle,window.navigator.userAgent);
     },5000)
   }
